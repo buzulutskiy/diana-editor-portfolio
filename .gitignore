@@ -11,3 +11,4 @@ assets/diana-photo.jpg
 public/project/*.png
 public/project/gallery/*/*.png
 assets/*.jpg
+NOTES.md
