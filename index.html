@@ -374,6 +374,19 @@
       .lb img{max-height:calc(100vh - 108px)}
     }
   </style>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111309158', 'ym');
+
+    ym(111309158, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/111309158" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
 </head>
 <body id="top">
   <header class="top">
@@ -806,6 +819,34 @@
         if(Math.abs(dx)>45) show(index+(dx<0?1:-1));
         startX=null;
       });
+    })();
+  </script>
+  <script>
+    // Цели Метрики: клики по контактам и просмотр иллюстраций.
+    (function(){
+      var ID=111309158;
+      function goal(name){ if(window.ym) ym(ID,'reachGoal',name); }
+
+      document.addEventListener('click',function(e){
+        var a=e.target.closest('a[href]');
+        if(a){
+          var href=a.getAttribute('href')||'';
+          if(href.indexOf('mailto:')===0) goal('contact_email');
+          else if(href.indexOf('tel:')===0) goal('contact_phone');
+          else if(href.indexOf('t.me/')>-1) goal('contact_telegram');
+          return;
+        }
+        if(e.target.matches('.cover-stage>img,.spread img,.toc-figure img')) goal('zoom_image');
+      });
+
+      // дочитал до контактов
+      var outro=document.getElementById('contact');
+      if(outro && 'IntersectionObserver' in window){
+        var seen=false;
+        new IntersectionObserver(function(entries,obs){
+          if(entries[0].isIntersecting && !seen){ seen=true; goal('scroll_to_contacts'); obs.disconnect(); }
+        },{threshold:.4}).observe(outro);
+      }
     })();
   </script>
 </body>
