@@ -1,0 +1,13 @@
+.DS_Store
+
+# черновые версии страницы — не для публикации
+index-cv.html
+index-v3.html
+resume.html
+cv/
+assets/diana-photo.jpg
+
+# исходники изображений: в репозиторий едут только webp
+public/project/*.png
+public/project/gallery/*/*.png
+assets/*.jpg
